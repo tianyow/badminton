@@ -8,7 +8,9 @@
 			box-sizing: border-box;
 		}
 		body {
-			background: #006600;
+			background: #eee;
+			font-family: arial, sans-serif;
+			font-weight: bold;
 			margin: 0;
 			padding: 0;
 			width: 100%;
@@ -22,19 +24,23 @@
 			text-align: center;
 			width: 50%;
 			height: 100vh;
-			line-height: 1.5;
+			line-height: 1.4;
 			position: relative;
 		}
 		.btn {
 			color: #fff;
 			font-size: 40px;
 			position: absolute;
-			bottom: 40px;
+			bottom: 0px;
 			display: block;
-			width: 40px;
-			height: 40px;
+			width: 50%;
+			height: 100px;
 			text-align: center;
 			text-decoration: none;
+			line-height: 2.5;
+		}
+		.btn:hover {
+			background: #ddd;
 		}
 		.minusA, .minusB {
 			left: 40px;
@@ -57,16 +63,20 @@
 <body>
 	<div class="score-box">
 		<span class="scoreA">0</span>
-		<a class="btn minusA" href="">&minus;</a>
-		<a class="btn plusA" href="">&plus;</a>
+		<div class="control">
+			<a class="btn minusA" href="">&minus;</a>
+			<a class="btn plusA" href="">&plus;</a>
+		</div>
 	</div>
 	<div class="score-box">
 		<span class="scoreB">0</span>
-		<a class="btn minusB" href="">&minus;</a>
-		<a class="btn plusB" href="">&plus;</a>
+		<div class="control">
+			<a class="btn minusB" href="">&minus;</a>
+			<a class="btn plusB" href="">&plus;</a>
+		</div>
 	</div>
-	<a class="reset" href="">Reset</a>
-	<a class="switch" href="">Switch</a>
+	<a class="reset" href="">重來</a>
+	<a class="switch" href="">換邊</a>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
@@ -76,7 +86,7 @@
 			// 左半場
 			$('.plusA').click(function(e) {
 				e.preventDefault();
-				if ( counterA < 25 ) {
+				if ( counterA < 21 ) {
 					counterA ++;
 					$('.scoreA').html(counterA);
 				}
@@ -91,7 +101,7 @@
 			// 右半場
 			$('.plusB').click(function(e) {
 				e.preventDefault();
-				if ( counterB < 25 ) {
+				if ( counterB < 21 ) {
 					counterB ++;
 					$('.scoreB').html(counterB);
 				}
@@ -112,8 +122,12 @@
 			// 半場交換
 			$('.switch').click(function(e) {
 				e.preventDefault();
-				$('.scoreA').html(counterB);
-				$('.scoreB').html(counterA);
+				var a = counterA;
+				var b = counterB;
+				$('.scoreA').html(b);
+				$('.scoreB').html(a);
+				counterA = b;
+				counterB = a;
 			})
 			
 		});
