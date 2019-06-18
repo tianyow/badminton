@@ -39,6 +39,7 @@
 			text-align: center;
 			text-decoration: none;
 			line-height: 2.5;
+			opacity: .7;
 		}
 		.control {
 			position: absolute;
@@ -136,6 +137,8 @@
 				e.preventDefault();
 				scoreA.html(0);
 				scoreB.html(0);
+				counterA = 0;
+				counterB = 0;
 			})
 			// 半場交換
 			$('.switch').click(function(e) {
