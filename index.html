@@ -9,7 +9,7 @@
 			box-sizing: border-box;
 		}
 		body {
-			background: #006600;
+			background: #005500;
 			font-family: arial, sans-serif;
 			font-weight: bold;
 			margin: 0;
@@ -31,9 +31,18 @@
 		}
 		.score-box:first-child {
 			border-right: 2px solid yellow;
+			background: #006600;
+		}
+		.active {
+			color: yellow;
+		}
+		.control {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
 		}
 		.btn {
-			color: #fff;
+			color: #ccc;
 			font-size: 40px;
 			display: block;
 			float: left;
@@ -43,11 +52,6 @@
 			text-decoration: none;
 			line-height: 2.5;
 			opacity: .7;
-		}
-		.control {
-			position: absolute;
-			bottom: 0;
-			width: 100%;
 		}
 		.reset, .switch {
 			background: #004400;
@@ -110,7 +114,8 @@
 				e.preventDefault();
 				if ( counterA < 21 ) {
 					counterA ++;
-					scoreA.html(counterA);
+					scoreA.html(counterA).addClass('active');
+					scoreB.removeClass('active');
 				}
 			})
 			minusA.click(function(e) {
@@ -125,7 +130,8 @@
 				e.preventDefault();
 				if ( counterB < 21 ) {
 					counterB ++;
-					scoreB.html(counterB);
+					scoreB.html(counterB).addClass('active');
+					scoreA.removeClass('active');
 				}
 			})
 			minusB.click(function(e) {
@@ -135,11 +141,11 @@
 					scoreB.html(counterB);
 				}
 			})
-			// 重設
+			// 重設分數
 			$('.reset').click(function(e) {
 				e.preventDefault();
-				scoreA.html(0);
-				scoreB.html(0);
+				scoreA.html(0).removeClass('active');
+				scoreB.html(0).removeClass('active');
 				counterA = 0;
 				counterB = 0;
 			})
@@ -148,12 +154,11 @@
 				e.preventDefault();
 				var a = counterA;
 				var b = counterB;
-				scoreA.html(b);
-				scoreB.html(a);
+				scoreA.html(b).toggleClass('active');
+				scoreB.html(a).toggleClass('active');
 				counterA = b;
 				counterB = a;
 			})
-			
 		});
 
 	</script>
