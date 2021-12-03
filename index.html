@@ -5,11 +5,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<title>PSC Badminton Scoreboard</title>
 	<style>
+		:root {
+			--theme-color: hsl(120, 100%, 17%);
+			--theme-color-mid: hsl(120, 100%, 20%);
+			--theme-color-dark: hsl(120, 100%, 14%);
+			--accent-color: #ffff00;
+		}
 		* {
 			box-sizing: border-box;
 		}
 		body {
-			background: #005500;
+			background: var(--theme-color);
 			font-family: arial, sans-serif;
 			font-weight: bold;
 			margin: 0;
@@ -30,11 +36,11 @@
 			letter-spacing: -20px;
 		}
 		.score-box:first-child {
-			border-right: 2px solid yellow;
-			background: #006600;
+			border-right: 2px solid var(--accent-color);
+			background: var(--theme-color-mid);
 		}
 		.active {
-			color: yellow;
+			color:  var(--accent-color);
 		}
 		.control {
 			position: absolute;
@@ -54,7 +60,7 @@
 			opacity: .7;
 		}
 		.reset, .switch {
-			background: #004400;
+			background: var(--theme-color-dark);
 			border-radius: 40px;
 			color: #fff;
 			display: block;
@@ -71,7 +77,19 @@
 			left: 15px;
 		}
 		.switch {
-			right: 15px;
+			border: 1px solid var(--accent-color);
+			border-radius: 36px;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 96px;
+			height: 96px;
+			display: grid;
+			place-items: center;
+		}
+		.switch svg {
+			width: 42px;
+			height: 42px;
 		}
 	</style>
 </head>
@@ -91,7 +109,12 @@
 		</div>
 	</div>
 	<a class="reset" href="">重來</a>
-	<a class="switch" href="">換邊</a>
+	<a class="switch" href="">
+		<svg class="icon line" width="48" height="48" id="left-right-arrow" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+			<polyline id="primary" points="17 19 20 16 17 13" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></polyline>
+			<path id="primary-2" data-name="primary" d="M20,16H4M4,8H20" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></path>
+			<polyline id="primary-3" data-name="primary" points="7 5 4 8 7 11" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></polyline>
+		</svg></a>
 
 	<script src="jquery-3.4.1.slim.min.js"></script>
 	<script>
