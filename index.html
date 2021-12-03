@@ -23,28 +23,33 @@
 			width: 100%;
 			height: 100vh;
 			overflow: hidden;
+			display: flex;
 		}
 		.score-box {
 			color: #fff;
 			font-size: 45vw;
-			float: left;
 			text-align: center;
-			width: 50%;
 			height: 100vh;
-			line-height: 1.2;
-			position: relative;
+			line-height: 1;
 			letter-spacing: -20px;
+			display: flex;
+			flex: 1 0 50%;
+			flex-direction: column;
+			align-items: center;
 		}
 		.score-box:first-child {
-			border-right: 2px solid var(--accent-color);
+			border-right: 5px solid var(--accent-color);
 			background: var(--theme-color-mid);
 		}
 		.active {
 			color:  var(--accent-color);
 		}
+		.scoreA, .scoreB {
+			display: flex;
+			flex: 1;
+			align-items: center;
+		}
 		.control {
-			position: absolute;
-			bottom: 0;
 			width: 100%;
 		}
 		.btn {
@@ -78,12 +83,12 @@
 		}
 		.switch {
 			border: 1px solid var(--accent-color);
-			border-radius: 36px;
+			border-radius: 32px;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			width: 96px;
-			height: 96px;
+			width: 72px;
+			height: 72px;
 			display: grid;
 			place-items: center;
 		}
